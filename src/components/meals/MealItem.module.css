@@ -1,0 +1,68 @@
+.item {
+  margin: 1rem 0;
+  list-style: none;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 20rem;
+  overflow: hidden;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.imageContainer img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info {
+  text-align: center;
+  padding: 1rem;
+  line-height: 1.8rem;
+}
+
+.info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btnContainer {
+  text-align: center;
+}
+
+.favoriteBtnContainer,
+.deleteBtnContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.favoriteBtnContainer .tooltip,
+.deleteBtnContainer .tooltip {
+  position: absolute;
+  background-color: rgb(143, 140, 140);
+  color: white;
+  padding: 0.3rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  left: -30%;
+  opacity: 0;
+}
+
+.btn {
+  position: relative;
+  cursor: pointer;
+  color: #db005b;
+  transition: 0.15s;
+  margin-bottom: 0.5rem;
+}
+
+.btn:hover,
+.btn:active {
+  color: #ffb362;
+}
+
+.favoriteBtnContainer:hover .tooltip,
+.deleteBtnContainer:hover .tooltip {
+  opacity: 90%;
+}

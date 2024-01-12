@@ -1,0 +1,50 @@
+:root {
+  --amber: #f79327;
+  --pink: #db005b;
+  --cream: rgb(255, 254, 229);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  background: var(--cream);
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--amber);
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.favorites-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.favorites-container > img {
+  margin-top: 3.5rem;
+  width: 40%;
+}
+
+.favorites-container > p {
+  margin-top: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.progress-indicator-container {
+  text-align: center;
+  margin-top: 15rem;
+}
