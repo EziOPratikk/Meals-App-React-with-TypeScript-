@@ -1,4 +1,4 @@
-# Note Keeper App
+# Deli Meal App
 
 Deli Meals application used to store different types of meals data and add as favorites.
 
