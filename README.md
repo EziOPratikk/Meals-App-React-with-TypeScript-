@@ -1,6 +1,6 @@
 # Deli Meals App
 
-Deli Meals application used to store different types of meals data and add as favorites.
+Deli Meals application used to store different types of meals data in Firebase Realtime Database and add specific meals as favorites.
 
 ## Steps
 
@@ -21,6 +21,19 @@ npm install
 ```
 npm start
 ```
+
+## Antdesign
+
+Following are the components used from Ant Design library:
+
+1. Notification
+https://ant.design/components/notification
+
+2. Spin
+https://ant.design/components/spin
+
+3. Popconfirm
+https://ant.design/components/popconfirm
 
 ## Screenshots
 
