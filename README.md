@@ -22,18 +22,15 @@ npm install
 npm start
 ```
 
-## Antdesign
+## Ant Design
 
 Following are the components used from Ant Design library:
 
-1. Notification
-https://ant.design/components/notification
+1. [Notification](https://ant.design/components/notification)
 
-2. Spin
-https://ant.design/components/spin
+2. [Spin](https://ant.design/components/spin)
 
-3. Popconfirm
-https://ant.design/components/popconfirm
+3. [Popconfirm](https://ant.design/components/popconfirm)
 
 ## Screenshots
 
