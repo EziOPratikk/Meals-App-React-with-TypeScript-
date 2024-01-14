@@ -24,7 +24,7 @@ npm start
 
 ## Ant Design
 
-Following are the components used from Ant Design library:
+Following are the components taken from Ant Design library:
 
 1. [Notification](https://ant.design/components/notification)
 
