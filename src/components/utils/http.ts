@@ -18,3 +18,10 @@ export async function getRequest(url: string) {
   return response;
 }
 
+export async function deleteRequest(url: string) {
+  const response = await fetch(url, {
+    method: 'DELETE',
+  });
+
+  return response;
+}

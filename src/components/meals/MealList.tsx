@@ -3,6 +3,8 @@ import MealItem from './MealItem';
 
 interface MealListType {
   meals?: MealType[];
+  onDelete?: (id: string) => void;
+  listType: 'All-Meals' | 'Favorites';
 }
 
 function MealList(props: MealListType) {
@@ -18,6 +20,8 @@ function MealList(props: MealListType) {
             category={meal.category}
             description={meal.description}
             price={meal.price}
+            onDelete={props.onDelete}
+            listType={props.listType}
           />
         );
       })}

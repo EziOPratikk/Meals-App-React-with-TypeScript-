@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import MealList from '../components/meals/MealList';
 import MealType from '../components/meals/model/meal-type';
-import { getRequest } from '../components/utils/http';
+import { deleteRequest, getRequest } from '../components/utils/http';
 import CircularProgressIndicator from '../components/utils/CircularProgressIndicator';
+import { antdNotification } from '../components/utils/antd-notification';
+import emptyImg from '../images/empty.png';
+import { FavoritesContext } from '../store/favorites-context';
 // import DUMMY_DATA from '../data/dummy-data';
 
 type RawMealData = {
@@ -18,8 +21,9 @@ function AllMeals() {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchedMeals, setFetchedMeals] = useState<MealType[]>([]);
 
-  useEffect(() => {
-    setIsLoading(true);
+  const favoritesCtx = useContext(FavoritesContext);
+
+  function fetchMeals() {
     getRequest('https://meals-app-a400b-default-rtdb.firebaseio.com/meals.json')
       .then((res) => {
         return res.json();
@@ -38,7 +42,30 @@ function AllMeals() {
         setFetchedMeals(meals);
         setIsLoading(false);
       });
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchMeals();
   }, []);
+
+  function handleMealDelete(id: string) {
+    setIsLoading(true);
+    deleteRequest(
+      `https://meals-app-a400b-default-rtdb.firebaseio.com/meals/${id}.json`
+    ).then((res) => {
+      if (res.ok) {
+        antdNotification('success', 'Meal deleted successfully');
+        fetchMeals();
+
+        favoritesCtx?.handleRemoveFavorite(id);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        antdNotification('error', 'Failed to delete a meal');
+      }
+    });
+  }
 
   if (isLoading) {
     return (
@@ -51,7 +78,18 @@ function AllMeals() {
   return (
     <section>
       <h1>All Meals</h1>
-      <MealList meals={fetchedMeals} />
+      {fetchedMeals.length === 0 ? (
+        <div className='no-meal-container'>
+          <img src={emptyImg} alt='a favorite meal icon' />
+          <p>Feeling hungry, start adding some meals!</p>
+        </div>
+      ) : (
+        <MealList
+          meals={fetchedMeals}
+          onDelete={handleMealDelete}
+          listType='All-Meals'
+        />
+      )}
     </section>
   );
 }

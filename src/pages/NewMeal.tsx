@@ -14,18 +14,24 @@ function NewMeal() {
 
   async function handleAddMeal(mealData: MealData) {
     setIsLoading(true);
-    const response = await postRequest(
-      'https://meals-app-a400b-default-rtdb.firebaseio.com/meals.json',
-      mealData
-    );
+    try {
+      const response = await postRequest(
+        'https://meals-app-a400b-default-rtdb.firebaseio.com/meals.json',
+        mealData
+      );
 
-    if (response.ok) {
-      setIsLoading(false);
-      antdNotification('success', 'Meal added successfully!');
-      navigate('/', { replace: true });
-    } else {
-      setIsLoading(false);
-      antdNotification('error', 'Failed to add a meal!');
+      if (response.ok) {
+        antdNotification('success', 'New Meal added successfully!');
+        navigate('/', { replace: true });
+      } else {
+        setIsLoading(false);
+        antdNotification(
+          'error',
+          'Failed to add a meal, please try again later'
+        );
+      }
+    } catch (error) {
+      antdNotification('error', `${error}`);
     }
 
     if (isLoading) {

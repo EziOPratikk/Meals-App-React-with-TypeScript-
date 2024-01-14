@@ -9,8 +9,14 @@ import { antdNotification } from '../utils/antd-notification';
 import { MdOutlineAttachMoney, MdDelete } from 'react-icons/md';
 import { FaHeart } from 'react-icons/fa';
 import { CiHeart } from 'react-icons/ci';
+import { Popconfirm } from 'antd';
 
-function MealItem(props: MealType) {
+type MealItemProps = {
+  onDelete?: (id: string) => void;
+  listType: 'All-Meals' | 'Favorites';
+};
+
+function MealItem(props: MealType & MealItemProps) {
   const favoritesCtx = useContext(FavoritesContext);
 
   const itemIsFavorite = favoritesCtx?.handleItemIsFavorite(props.id);
@@ -18,6 +24,7 @@ function MealItem(props: MealType) {
   function handleFavorite() {
     if (itemIsFavorite) {
       favoritesCtx?.handleRemoveFavorite(props.id);
+      antdNotification('warning', `${props.name} removed from favorites.`);
     } else {
       antdNotification('success', `${props.name} added to favorites.`);
       favoritesCtx?.handleAddFavorite({
@@ -31,7 +38,11 @@ function MealItem(props: MealType) {
     }
   }
 
-  function handleDelete() {}
+  const confirmDelete = () => {
+    props.onDelete!(props.id);
+  };
+
+  const cancelDelete = () => null;
 
   return (
     <li className={classes.item}>
@@ -63,14 +74,32 @@ function MealItem(props: MealType) {
               {itemIsFavorite ? 'Remove Favorite' : 'Favorite'}
             </div>
           </div>
-          <div className={classes.deleteBtnContainer}>
-            <MdDelete
-              size={35}
-              className={classes.btn}
-              onClick={handleDelete}
-            />
-            <div className={classes.tooltip}>Remove</div>
-          </div>
+          {props.listType === 'All-Meals' && (
+            <div className={classes.deleteBtnContainer}>
+              <Popconfirm
+                title='Delete Meal'
+                description='Are you sure to delete this meal?'
+                onConfirm={confirmDelete}
+                onCancel={cancelDelete}
+                okText='Yes'
+                cancelText='No'
+                okButtonProps={{
+                  style: { background: '#db005b', color: 'white' },
+                }}
+                cancelButtonProps={{
+                  style: { background: '#f79327', color: 'white' },
+                }}
+              >
+                <MdDelete
+                  size={35}
+                  className={classes.btn}
+                  // onClick={handleDelete}
+                />
+              </Popconfirm>
+
+              <div className={classes.tooltip}>Remove</div>
+            </div>
+          )}
         </div>
       </CustomCard>
     </li>

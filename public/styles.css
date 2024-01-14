@@ -28,18 +28,18 @@ h2 {
   font-size: 1.5rem;
 }
 
-.favorites-container {
+.no-meal-container {
   text-align: center;
   margin: 0 auto;
 }
 
-.favorites-container > img {
-  margin-top: 3.5rem;
+.no-meal-container > img {
+  margin-top: 2rem;
   width: 40%;
 }
 
-.favorites-container > p {
-  margin-top: 1rem;
+.no-meal-container > p {
+  margin-top: 2rem;
   font-family: inherit;
   font-weight: bold;
 }
