@@ -25,16 +25,17 @@ function NewMealForm(props: NewMealFormProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    // useRef() can also be used to access DOM elements.
     const enteredName = nameRef.current!.value;
     const enteredImgURL = imgUrlRef.current!.value;
-    const eneteredCategory = categoryRef.current!.value;
+    const enteredCategory = categoryRef.current!.value;
     const enteredPrice = +priceRef.current!.value;
     const enteredDescription = descriptionRef.current!.value;
 
     const mealData = {
       name: enteredName,
       image: enteredImgURL,
-      category: eneteredCategory,
+      category: enteredCategory,
       price: enteredPrice,
       description: enteredDescription,
     };
