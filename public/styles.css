@@ -28,12 +28,14 @@ h2 {
   font-size: 1.5rem;
 }
 
-.no-meal-container {
+.no-meal-container,
+.page-not-found-container {
   text-align: center;
   margin: 0 auto;
 }
 
-.no-meal-container > img {
+.no-meal-container > img,
+.page-not-found-container > img {
   margin-top: 2rem;
   width: 40%;
 }
@@ -41,6 +43,12 @@ h2 {
 .no-meal-container > p {
   margin-top: 2rem;
   font-family: inherit;
+  font-weight: bold;
+}
+
+.page-not-found-container > p {
+  margin-top: -1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
