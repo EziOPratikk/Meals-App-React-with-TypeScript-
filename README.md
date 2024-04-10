@@ -37,3 +37,4 @@ Following are the components taken from Ant Design library:
 <img src='src/images/screenshots/all-meals-page.png' style="display: block;"/>
 <img src='src/images/screenshots/add-meals-page.png' style="display: block;"/>
 <img src='src/images/screenshots/favorites-page.png' style="display: block;"/>
+<img src='src/images/screenshots/404-page.png' style="display: block;"/>
