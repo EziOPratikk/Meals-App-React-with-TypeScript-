@@ -40,6 +40,13 @@ function AllMeals() {
           meals.push(meal);
         }
         setFetchedMeals(meals);
+      })
+      .then(() => setIsLoading(false))
+      .catch((_) => {
+        antdNotification(
+          'error',
+          'Unexpected error occurred while serving your meal. Please try again later!'
+        );
         setIsLoading(false);
       });
   }
